@@ -2,14 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAppProviderValue } from '../Context/AppContext';
 import ItemCard from './ItemCard';
+import { useFilterProviderValue } from '../Context/FilterContext';
 
 const ProductContainer = () => {
-  const {products,isLoading}=useAppProviderValue();
-  console.log(isLoading)
+  const {isLoading}=useAppProviderValue();
+
+  const {filter_products}=useFilterProviderValue();
   return (
     <Wrapper>
       {isLoading && <h1>Page is loading ...</h1>}
-      {!isLoading && products.map((item,i)=><ItemCard key={i} item={item} />)}
+      {!isLoading && filter_products.map((item,i)=><ItemCard key={i} item={item} />)}
     </Wrapper>
   )
 }

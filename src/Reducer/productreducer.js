@@ -1,4 +1,4 @@
-export const productreducer=(state,action)=>{
+export  const productreducer=(state,action)=>{
     const {type,payload}=action;
 
     switch(type){

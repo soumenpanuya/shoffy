@@ -6,7 +6,7 @@ const AppContext=createContext();
 const initialstate={
     isLoading:false,
     products:[],
-    user:null
+    user:1
 }
 
 export const AppContextProvider=({children})=>{
@@ -19,7 +19,7 @@ export const AppContextProvider=({children})=>{
             const data=await response.json();
             dispatch({type:"apidata",payload:data})
         } catch (error) {
-            
+            console.log(error)
         }
 
     };
