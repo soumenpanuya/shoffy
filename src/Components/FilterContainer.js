@@ -1,42 +1,42 @@
 import styled from "styled-components";
+import { useFilterProviderValue } from "../Context/FilterContext";
 
 const FilterContainer = () => {
+
+  const {all_products,updatefilterkey}=useFilterProviderValue();
+
+  function filterdata(type){
+    let res=all_products.map((el,i)=>{
+      return el[type]
+    });
+    const result=[...new Set(res)];
+    return result;
+
+  }
+
+  const filtercategory = filterdata("category");
+
   return (
     <Wrapper >
         <h1>Filter</h1>
 
         <form >
-          <label htmlFor='price' >Price: 5000 xdhvdh</label>
+          <label htmlFor='price' >Price: 5000 </label>
           <input type='range' id='price' max="10000"  step="100"  />
         </form>
 
         <h1>Catagory</h1>
 
         <div >
-
-          <div className='filteritem'>
-            <input type='checkbox' id='mencloth' />
+          {filtercategory.map((el,i)=>(
+            <div className='filteritem' key={i} >
+            <input type='checkbox' id={el} name="category" value={el}
+             onClick={updatefilterkey}/>
             &nbsp;
-            <label htmlFor='mencloth'>Men's Clothing</label>
+            <label htmlFor={el}>{el}</label>
           </div>
 
-          <div className='filteritem'>
-            <input type='checkbox' id='mencloth' />
-            &nbsp;
-            <label htmlFor='mencloth'>Women's Clothing</label>
-          </div>
-
-          <div className='filteritem'>
-            <input type='checkbox' id='mencloth' />
-            &nbsp;
-            <label htmlFor='mencloth'>Jewelery</label>
-          </div>
-
-          <div className='filteritem'>
-            <input type='checkbox'  id='mencloth' />
-            &nbsp;
-            <label htmlFor='mencloth'>Electronics</label>
-          </div>
+          ))}
 
         </div>
         

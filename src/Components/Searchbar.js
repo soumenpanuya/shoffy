@@ -1,11 +1,14 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useFilterProviderValue } from '../Context/FilterContext';
 
 const Searchbar = () => {
+
+  const {updatefilterkey}=useFilterProviderValue();
   return (
     
-    <Wrapper  >
-        <input  type='search' placeholder='Search By Name'/>
+    <Wrapper onSubmit={(e)=>e.preventDefault()} >
+        <input  type='search' placeholder='Search By Name' name='text' onChange={updatefilterkey}/>
     </Wrapper>
   )
 }

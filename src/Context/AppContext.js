@@ -6,7 +6,7 @@ const AppContext=createContext();
 const initialstate={
     isLoading:false,
     products:[],
-    user:1
+    user:null
 }
 
 export const AppContextProvider=({children})=>{
@@ -17,6 +17,7 @@ export const AppContextProvider=({children})=>{
         try {
             const response=await fetch("https://fakestoreapi.com/products/");
             const data=await response.json();
+            console.log(data)
             dispatch({type:"apidata",payload:data})
         } catch (error) {
             console.log(error)
