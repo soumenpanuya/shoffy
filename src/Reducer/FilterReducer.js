@@ -33,27 +33,26 @@ const reducer=(state,action)=>{
         }
         case "updatefilterlist":{
             const {all_products}=state;
-            const {text,category}=state.filter;
-            console.log("text",text,"category",category)
-            
+            const {text,category,price}=state.filter;           
                 let newlist =[...all_products];
                 if(text){
-                    console.log("under text");
                     newlist= newlist.filter((el)=>{
                         return el.title.toLowerCase().includes(text.toLowerCase())
                     })   
                 }
                 
                 if(category.length>0){ // is all added in category ten use(category !=="all") for all select...
-                    console.log("under category");
                     newlist= newlist.filter((el)=>{
                         return category.includes(el["category"])
                     });
                     
                 }
-
-                console.log("new list",newlist);
-                    return{
+                if(price){
+                    newlist=newlist.filter((el)=>{
+                        return el.price<=price;
+                    })
+                }
+                return{
                     ...state,
                     filter_products:newlist
                 }

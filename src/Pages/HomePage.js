@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import FilterContainer from '../Components/FilterContainer';
 import Searchbar from '../Components/Searchbar';
 import ProductContainer from '../Components/ProductContainer';
+import { useAppProviderValue } from '../Context/AppContext';
 
 const HomePage = () => {
+  const {isLoading}=useAppProviderValue();
   return (
     <Wrapper>
         
-      <FilterContainer />
+      {!isLoading && < FilterContainer />}
       <Searchbar />
       <ProductContainer />
       

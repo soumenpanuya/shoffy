@@ -3,7 +3,8 @@ import { useFilterProviderValue } from "../Context/FilterContext";
 
 const FilterContainer = () => {
 
-  const {all_products,updatefilterkey}=useFilterProviderValue();
+  const {all_products,updatefilterkey,filter}=useFilterProviderValue();
+
 
   function filterdata(type){
     let res=all_products.map((el,i)=>{
@@ -20,9 +21,10 @@ const FilterContainer = () => {
     <Wrapper >
         <h1>Filter</h1>
 
-        <form >
-          <label htmlFor='price' >Price: 5000 </label>
-          <input type='range' id='price' max="10000"  step="100"  />
+        <form onSubmit={(e)=>e.preventDefault()}>
+          <label htmlFor='price' >Price: {filter.price} </label>
+          <input type='range' id='price' name="price" max="1500"  step="100" value={filter.price}
+            onChange={updatefilterkey} />
         </form>
 
         <h1>Catagory</h1>

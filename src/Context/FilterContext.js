@@ -9,7 +9,8 @@ const initial={
     filter_products:[],
     filter:{
         text:"",
-        category:[]
+        category:[],
+        price:1000
     }
 };
 
