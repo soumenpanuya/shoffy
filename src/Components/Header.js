@@ -17,7 +17,7 @@ const Header = () => {
 
             {user &&  <li className='navitem'><img src='https://cdn-icons-png.flaticon.com/128/859/859270.png' /><span>My orders</span></li>}
 
-            {user &&  <li className='navitem' ><img src='https://cdn-icons-png.flaticon.com/128/4290/4290854.png' /><span>Cart</span></li>}
+            {user && <li  > <Link to="cart" className='navitem'><img src='https://cdn-icons-png.flaticon.com/128/4290/4290854.png' /><span>Cart</span></Link></li>}
 
             <li><Link to="signin" className='navitem'><img src='https://cdn-icons-png.flaticon.com/128/2050/2050106.png'  /><span>Sign in</span></Link></li>
 

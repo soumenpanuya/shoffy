@@ -50,7 +50,7 @@ export default FilterContainer;
 
 const Wrapper=styled.div`
 
-width: 20rem;
+    width: 20rem;
     background-color: rgb(224, 222, 222);
     position: fixed;
     left: 0;

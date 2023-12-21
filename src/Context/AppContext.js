@@ -6,7 +6,7 @@ const AppContext=createContext();
 const initialstate={
     isLoading:false,
     products:[],
-    user:null
+    user:1
 }
 
 export const AppContextProvider=({children})=>{

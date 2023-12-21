@@ -1,10 +1,8 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
-import { useCartProviderValue } from '../Context/CartContext';
 
-const ItemCard = ({item}) => {
-  const {addtocart}=useCartProviderValue();
-    const {image,title,price}=item
+const CartItem = ({item}) => {
+    const {title,price,image,qty}=item;
   return (
     <Wrapper >
     <div className='img-container'>    
@@ -13,15 +11,24 @@ const ItemCard = ({item}) => {
 
     <p className='title'>{title.slice(0,18)}....</p>
 
-    <p className='price'>&#8377; {price}</p>
+    <div className='price_container'>
+      <p className='price'>&#8377; {price}</p>
+      <div className='quantity'>
+          <img src='https://cdn-icons-png.flaticon.com/128/1828/1828919.png'/>
+          {qty}
+          <img src='https://cdn-icons-png.flaticon.com/128/1828/1828899.png'/>
+      </div>
 
-    <button onClick={()=>{addtocart(price,item)}}>Add To Cart</button>
+    </div>
+
+    <button >Remove To Cart</button>
     
   </Wrapper>
   )
 }
 
-export default ItemCard;
+export default CartItem;
+
 
 const Wrapper=styled.div`
 
@@ -50,6 +57,26 @@ const Wrapper=styled.div`
         align-self: flex-start;
         font-weight: 500;
     }
+    .price_container{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .quantity{
+        margin: 0 0.5rem;
+        font-size: 2.2rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap:1rem;
+
+        img{
+          width: 2.5rem;
+          height: 2.5rem;
+          cursor: pointer;
+        }
+      }
+    }
     .price{
         width: 100%;
         font-size: 2.5rem;
@@ -74,4 +101,3 @@ const Wrapper=styled.div`
     }
 
 `
-
