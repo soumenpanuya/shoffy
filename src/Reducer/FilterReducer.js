@@ -12,23 +12,30 @@ const reducer=(state,action)=>{
             }
         }
         case "updatefilter":{
-            const {name,value}=payload;
+            const {name,value,checked}=payload;
+            const updatefilter={...state.filter};
+            if(name==="category"){
+                if(checked)
+                {
+                    updatefilter[name]=[...updatefilter[name],value];
+                }else{
+                    updatefilter[name]=updatefilter[name].filter((el)=>{
+                        return el!==value
+                    })
+                }
+            }else{
+                updatefilter[name]=value;
+            }
             return{
                 ...state,
-                filter:{
-                    ...state.filter,
-                    [name]:value   //[name] is used fo dynamic key...
-                }
+                filter:updatefilter
             }
         }
         case "updatefilterlist":{
             const {all_products}=state;
-            console.log("update list call",all_products)
             const {text,category}=state.filter;
             console.log("text",text,"category",category)
-            if(text || category)
-            {
-                console.log("under call");
+            
                 let newlist =[...all_products];
                 if(text){
                     console.log("under text");
@@ -37,10 +44,10 @@ const reducer=(state,action)=>{
                     })   
                 }
                 
-                if(category){ // is all added in category ten use(category !=="all") for all select...
+                if(category.length>0){ // is all added in category ten use(category !=="all") for all select...
                     console.log("under category");
                     newlist= newlist.filter((el)=>{
-                        return el["category"]===category
+                        return category.includes(el["category"])
                     });
                     
                 }
@@ -51,7 +58,6 @@ const reducer=(state,action)=>{
                     filter_products:newlist
                 }
             
-            }
         }
         default:return state;
 

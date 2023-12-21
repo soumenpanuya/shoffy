@@ -9,7 +9,7 @@ const initial={
     filter_products:[],
     filter:{
         text:"",
-        category:""
+        category:[]
     }
 };
 
@@ -25,11 +25,9 @@ export const FilterContextProvider=({children})=>{
     },[products])
 
     const updatefilterkey=(event)=>{
-        const name=event.target.name;
-        const value=event.target.value;
-        console.log("name value",name, value)
+        const {name,value,checked}=event.target;
 
-        dispatch({type:"updatefilter",payload:{name,value}})
+        dispatch({type:"updatefilter",payload:{name,value,checked}})
 
     }
 
