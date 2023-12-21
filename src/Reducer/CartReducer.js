@@ -2,6 +2,15 @@ const reducer=(state,action)=>{
     const {type,payload}=action;
 
     switch(type){
+        case "setcart":{
+            console.log("setcard call");
+            console.log(payload);
+            return{
+                ...state,
+                cart:payload
+            }
+        }
+
 
         case "addtocart":{
             let newcart={
