@@ -14,6 +14,17 @@ const reducer=(state,action)=>{
             }
         }
 
+        case "removetocart":{
+            let newcart=[...state.cart];
+            newcart=newcart.filter((el)=>{
+                return el.id!==payload.id
+            });
+            return{
+                ...state,
+                cart:newcart
+            }
+        }
+
         default:return state;
     }
 };

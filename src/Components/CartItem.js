@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useCartProviderValue } from '../Context/CartContext';
 
 const CartItem = ({item}) => {
+  const {removetocart}=useCartProviderValue();
     const {title,price,image,qty}=item;
   return (
     <Wrapper >
@@ -21,7 +23,7 @@ const CartItem = ({item}) => {
 
     </div>
 
-    <button >Remove To Cart</button>
+    <button onClick={()=>{removetocart(item)}}>Remove To Cart</button>
     
   </Wrapper>
   )
@@ -40,6 +42,7 @@ const Wrapper=styled.div`
     align-items: center;
     box-shadow: 3px 3px 15px rgb(201, 199, 199),-3px -3px 15px rgb(201, 199, 199);
     gap: 1rem;
+    min-height: 40rem;
     .img-container{
         width: 100%;
         flex-grow: 1;
