@@ -33,6 +33,7 @@ const Wrapper=styled.div`
     align-items: center;
     box-shadow: 3px 3px 15px rgb(201, 199, 199),-3px -3px 15px rgb(201, 199, 199);
     gap: 1rem;
+    min-height: 40rem;
     .img-container{
         width: 100%;
         flex-grow: 1;

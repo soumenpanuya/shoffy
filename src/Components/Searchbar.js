@@ -4,11 +4,11 @@ import { useFilterProviderValue } from '../Context/FilterContext';
 
 const Searchbar = () => {
 
-  const {updatefilterkey}=useFilterProviderValue();
+  const {updatefilterkey,filter}=useFilterProviderValue();
   return (
     
     <Wrapper onSubmit={(e)=>e.preventDefault()} >
-        <input  type='search' placeholder='Search By Name' name='text' onChange={updatefilterkey}/>
+        <input  type='search' placeholder='Search By Name' name='text' value={filter.text} onChange={updatefilterkey}/>
     </Wrapper>
   )
 }
